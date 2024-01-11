@@ -7,11 +7,11 @@ productoCtrl.crearProducto = async (req, res) =>{
     try {
         const nuevoProducto = new Producto({
             nombre: req.body.nombre,
-            precio: req.body.precio,
+            precioVenta: req.body.precioVenta,
             marca: req.body.marca,
             tipoProducto: req.body.tipoProducto,
             codigo: req.body.codigo,
-            codigoBarra: req.body.codigoBarra,
+            imagen: req.body.imagen,
             stock: req.body.stock
         });        
         await nuevoProducto.save();

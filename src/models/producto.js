@@ -5,21 +5,18 @@ const productoSchema = new Schema({
         type: String,
         maxlength: 150,
         required: true,
-        unique:true,
     },
-    precio:{
+    precioVenta:{
         type: Number,
         required: true
     },
     marca:{
         type: String,
         required: true,
-        unique: true,
         maxlength: 150
     },
     tipoProducto:{
         type: String,
-        unique: true,
         maxlength: 150,
         required:true
     },
@@ -27,12 +24,7 @@ const productoSchema = new Schema({
         data: Buffer
     },
     codigo:{
-        type:Number,
-        unique:true,
-        required:true
-    },
-    codigoBarra:{
-        type:Number,
+        type:String,
         unique:true,
         required:true
     },

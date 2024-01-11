@@ -4,6 +4,7 @@ import cors from 'cors';
 import path from 'path';
 import './database';
 import productoRoutes from './routes/producto.routes';
+import ventaRoutes from './routes/venta.routes'
 
 // Configuracion
 // Crear instancia de express
@@ -22,4 +23,5 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(express.static(path.join(__dirname,"../public")));
 
-app.use('/api/kiosko',productoRoutes);
+app.use('/api/puntoDeVenta',productoRoutes);
+app.use('/api/puntoDeVenta',ventaRoutes);

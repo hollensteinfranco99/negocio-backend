@@ -3,11 +3,11 @@ import productoCtrl from "../controllers/producto.controllers";
 
 const router = Router();
 
-router.route('/')
+router.route('/producto')
 .get(productoCtrl.listarProductos)
 .post(productoCtrl.crearProducto);
 
-router.route('/:id')
+router.route('/producto/:id')
 .delete(productoCtrl.eliminarProducto)
 .put(productoCtrl.editarProducto)
 .get(productoCtrl.obtenerProducto);
