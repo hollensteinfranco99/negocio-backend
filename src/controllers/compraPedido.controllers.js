@@ -23,17 +23,40 @@ compraPedidoCtrl.crearCompraPedido = async (req, res) =>{
         res.status(500).json({mensaje: 'error al agregar pedido'});
     }
 }
+compraPedidoCtrl.listarPedidosPorEstado = async (req, res) => {
+    const { estado } = req.query;
 
-compraPedidoCtrl.listarCompraPedidos = async (req,res) =>{
     try {
-        const arregloCompraPedido = await CompraPedido.find();
-        res.status(200).json(arregloCompraPedido);
+        const consulta = { estado: estado || 'EN PROCESO' };
+        const pedidos = await CompraPedido.find(consulta);
+        res.status(200).json(pedidos);
     } catch (error) {
         console.log(error);
-        res.status(404).json({mensaje: 'no se pudo enviar la lista de pedidos'});
+        res.status(500).json({ mensaje: 'Error en el servidor' });
     }
-}
+};
 
+compraPedidoCtrl.listarCompraPedidos = async (req, res) => {
+    const { q } = req.query;
+
+    try {
+        if (q) {
+            const pedidos = await CompraPedido.find({
+                $or: [
+                    {proveedor: { $regex: new RegExp(q, 'i') } },
+                    { nro_factura: { $regex: new RegExp(q, 'i') } },
+                ],
+            });
+            res.status(200).json(pedidos);
+        } else {
+            const arregloPedidos = await CompraPedido.find();
+            res.status(200).json(arregloPedidos);
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+};
 compraPedidoCtrl.eliminarCompraPedido = async (req,res) =>{
     try {
         await CompraPedido.findByIdAndDelete(req.params.id);

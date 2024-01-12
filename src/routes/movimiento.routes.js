@@ -12,4 +12,10 @@ router.route('/movimiento/:id')
 .put(movimientoCtrl.editarMovimiento)
 .get(movimientoCtrl.obtenerMovimiento);
 
+router.route('/movimientoDescripcion')
+.get(movimientoCtrl.obtenerMovimientoPorDescripcion);
+
+router.route('/movimientoTipo')
+.get(movimientoCtrl.obtenerMovimientoPorTipo);
+
 export default router;

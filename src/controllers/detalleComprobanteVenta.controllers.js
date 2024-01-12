@@ -23,9 +23,15 @@ detalleVentaCtrl.crearDetalleVenta = async (req, res) => {
 }
 
 detalleVentaCtrl.listarDetalleVentas = async (req, res) => {
+    const { venta_id } = req.query;
     try {
-        const arregloDetalleVenta = await DetalleVenta.find();
-        res.status(200).json(arregloDetalleVenta);
+        if (venta_id) {
+            const detalles = await DetalleVenta.find({ venta_id });
+            res.status(200).json(detalles);
+        } else{
+            const arregloDetalleVenta = await DetalleVenta.find();
+            res.status(200).json(arregloDetalleVenta);
+        }
     } catch (error) {
         console.log(error);
         res.status(404).json({ mensaje: 'no se pudo enviar la lista de detalle ventas' });
@@ -48,16 +54,6 @@ detalleVentaCtrl.editarDetalleVenta = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({ mensaje: 'error al editar' });
-    }
-}
-detalleVentaCtrl.obtenerDetalleVenta = async (req, res) => {
-    try {
-        const detalleVentaEncontrado = await DetalleVenta.findById(req.params.id);
-        res.status(200).json(detalleVentaEncontrado);
-
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener el detalleVenta' });
     }
 }
 export default detalleVentaCtrl;

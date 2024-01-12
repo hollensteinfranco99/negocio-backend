@@ -26,7 +26,7 @@ cajaCtrl.crearCaja = async (req, res) =>{
 
 cajaCtrl.listarCajas = async (req,res) =>{
     try {
-        const arregloCaja = await Caja.find();
+        const arregloCaja = await Caja.find().sort({ nro_caja: 'desc' });
         res.status(200).json(arregloCaja);
     } catch (error) {
         console.log(error);

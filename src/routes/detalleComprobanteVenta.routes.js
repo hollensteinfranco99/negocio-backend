@@ -10,6 +10,5 @@ router.route('/detalleComprobanteVenta')
 router.route('/detalleComprobanteVenta/:id')
 .delete(detalleVentaCtrl.eliminarDetalleVenta)
 .put(detalleVentaCtrl.editarDetalleVenta)
-.get(detalleVentaCtrl.obtenerDetalleVenta);
 
 export default router;

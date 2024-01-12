@@ -4,12 +4,16 @@ import compraPedidoCtrl from "../controllers/compraPedido.controllers";
 const router = Router();
 
 router.route('/compraPedido')
-.get(compraPedidoCtrl.listarCompraPedidos)
-.post(compraPedidoCtrl.crearCompraPedido);
+    .get(compraPedidoCtrl.listarCompraPedidos)
+    .post(compraPedidoCtrl.crearCompraPedido);
 
 router.route('/compraPedido/:id')
-.delete(compraPedidoCtrl.eliminarCompraPedido)
-.put(compraPedidoCtrl.editarCompraPedido)
-.get(compraPedidoCtrl.obtenerCompraPedido);
+    .delete(compraPedidoCtrl.eliminarCompraPedido)
+    .put(compraPedidoCtrl.editarCompraPedido)
+    .get(compraPedidoCtrl.obtenerCompraPedido);
+
+router.route('/compraPedidoPorEstado')
+    .get(compraPedidoCtrl.listarPedidosPorEstado);
+
 
 export default router;
