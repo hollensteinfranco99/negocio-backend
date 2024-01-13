@@ -12,4 +12,8 @@ router.route('/producto/:id')
 .put(productoCtrl.editarProducto)
 .get(productoCtrl.obtenerProducto);
 
+router.route('/productoPorCodigo')
+.get(productoCtrl.obtenerProductoPorCodigo)
+
+
 export default router;

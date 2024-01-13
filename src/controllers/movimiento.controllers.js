@@ -15,8 +15,9 @@ movimientoCtrl.crearMovimiento = async (req, res) => {
             estado: req.body.estado,
             pedido_id: req.body.pedido_id
         });
-        await nuevoMovimiento.save();
-        res.status(201).json({ mensaje: 'OK' });
+        const movimientoGuardado = await nuevoMovimiento.save();
+
+        res.status(201).json({ mensaje: 'OK', movimiento: movimientoGuardado});
 
     } catch (error) {
         console.log(error);

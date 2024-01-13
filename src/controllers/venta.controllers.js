@@ -15,8 +15,9 @@ ventaCtrl.crearVenta = async (req, res) => {
             estado: req.body.estado,
             movimiento_id: req.body.movimiento_id
         });
-        await nuevaVenta.save();
-        res.status(201).json({ mensaje: 'OK' });
+        const ventaGuardada = await nuevaVenta.save();
+
+        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada});
 
     } catch (error) {
         console.log(error);

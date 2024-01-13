@@ -11,8 +11,8 @@ productoCtrl.crearProducto = async (req, res) => {
             marca: req.body.marca,
             tipoProducto: req.body.tipoProducto,
             codigo: req.body.codigo,
-            imagen: req.body.imagen,
-            stock: req.body.stock
+            stock: req.body.stock,
+            permitirStockNegativo: req.body.permitirStockNegativo
         });
         await nuevoProducto.save();
         res.status(201).json({ mensaje: 'OK' });
@@ -22,14 +22,26 @@ productoCtrl.crearProducto = async (req, res) => {
         res.status(500).json({ mensaje: 'error al agregar producto' });
     }
 }
+productoCtrl.obtenerProductoPorCodigo = async (req, res) => {
+    const { codigo } = req.query;
 
+    try {
+        if(codigo){
+            const producto = await Producto.findOne({ codigo: codigo });
+            res.status(200).json(producto);
+        }
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ mensaje: 'Error en el servidor' });
+    }
+};
 productoCtrl.listarProductos = async (req, res) => {
     const { codigo_like, nombre_like } = req.query;
 
     try {
         if (codigo_like) {
             // Lógica para cargar por código
-            const producto = await Producto.findOne({ codigo: { $regex: new RegExp(codigo_like, 'i') } });
+            const producto = await Producto.find({ codigo: { $regex: new RegExp(codigo_like, 'i') } });
 
             if (producto) {
                 res.status(200).json(producto);

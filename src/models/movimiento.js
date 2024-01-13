@@ -16,20 +16,16 @@ const movimientoSchema = new Schema({
     fechaRegistro:{
         type: String,
         maxlength: 150,
-        required:true
     },
     tipoMovimiento:{
-        type:Number,
-        required:true
+        type:String,
     },
     nro_movimiento:{
         type: String,
-        required:true
     },
     estado:{
         type: String,
         maxlength: 150,
-        required: true,
     },
     pedido_id: {
         type: Schema.Types.ObjectId,

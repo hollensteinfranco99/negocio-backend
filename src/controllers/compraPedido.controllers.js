@@ -15,8 +15,11 @@ compraPedidoCtrl.crearCompraPedido = async (req, res) =>{
             descuento: req.body.descuento,
             estado: req.body.estado
         });        
-        await nuevoCompraPedido.save();
-        res.status(201).json({mensaje: 'OK'});
+
+        const pedidoGuardado = await nuevoCompraPedido.save();
+
+
+        res.status(201).json({mensaje: 'OK', pedido: pedidoGuardado});
 
     } catch (error) {
         console.log(error);
