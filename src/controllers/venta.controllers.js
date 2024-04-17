@@ -47,7 +47,11 @@ ventaCtrl.listarVentas = async (req, res) => {
 }
 ventaCtrl.editarVenta = async (req, res) => {
     try {
-        await Venta.findByIdAndUpdate(req.params.id, req.body);
+    await Venta.findByIdAndUpdate(req.params.id, req.body);
+
+
+        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada});
+
         res.status(200).json({ mensaje: 'Se modifica' })
     } catch (error) {
         console.log(error);
