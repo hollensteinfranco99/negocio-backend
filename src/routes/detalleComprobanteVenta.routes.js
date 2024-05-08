@@ -1,14 +1,18 @@
-import { Router } from "express";
-import detalleVentaCtrl from "../controllers/detalleComprobanteVenta.controllers";
+//import { Router } from "express";
+//import detalleVentaCtrl from "../controllers/detalleComprobanteVenta.controllers";
+//const router = Router();
+const express = require('express');
+const detalleVentaCtrl = require("../controllers/detalleComprobanteVenta.controllers");
+const router = express.Router();
 
-const router = Router();
 
 router.route('/detalleComprobanteVenta')
-.get(detalleVentaCtrl.listarDetalleVentas)
-.post(detalleVentaCtrl.crearDetalleVenta);
+    .get(detalleVentaCtrl.listarDetalleVentas)
+    .post(detalleVentaCtrl.crearDetalleVenta);
 
 router.route('/detalleComprobanteVenta/:id')
-.delete(detalleVentaCtrl.eliminarDetalleVenta)
-.put(detalleVentaCtrl.editarDetalleVenta)
+    .delete(detalleVentaCtrl.eliminarDetalleVenta)
+    .put(detalleVentaCtrl.editarDetalleVenta)
 
-export default router;
+//export default router;
+module.exports = router;

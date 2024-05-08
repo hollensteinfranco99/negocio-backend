@@ -1,9 +1,9 @@
-import DetalleCompra from '../models/detalleComprobanteCompra';
-
+//import DetalleCompra from '../models/detalleComprobanteCompra';
+const DetalleCompra = require('../models/detalleComprobanteCompra');
 
 const detalleCompraCtrl = {};
 
-detalleCompraCtrl.crearDetalleCompra = async (req, res) => {
+detalleCompraCtrl.crearDetalleCompra = async(req, res) => {
     try {
         const nuevoDetalleCompra = new DetalleCompra({
             producto_id: req.body.producto_id,
@@ -22,7 +22,7 @@ detalleCompraCtrl.crearDetalleCompra = async (req, res) => {
     }
 }
 
-detalleCompraCtrl.listarDetalleCompras = async (req, res) => {
+detalleCompraCtrl.listarDetalleCompras = async(req, res) => {
     const { pedido_id } = req.query;
     try {
         if (pedido_id) {
@@ -39,7 +39,7 @@ detalleCompraCtrl.listarDetalleCompras = async (req, res) => {
     }
 }
 
-detalleCompraCtrl.eliminarDetalleCompra = async (req, res) => {
+detalleCompraCtrl.eliminarDetalleCompra = async(req, res) => {
     try {
         await DetalleCompra.findByIdAndDelete(req.params.id);
         res.status(200).json({ mensaje: 'OK' });
@@ -48,7 +48,7 @@ detalleCompraCtrl.eliminarDetalleCompra = async (req, res) => {
         res.status(404).json({ mensaje: 'error al eliminar' });
     }
 }
-detalleCompraCtrl.editarDetalleCompra = async (req, res) => {
+detalleCompraCtrl.editarDetalleCompra = async(req, res) => {
     try {
         await DetalleCompra.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({ mensaje: 'Se modifica' })

@@ -1,4 +1,6 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const detalleComprobanteCompraSchema = new Schema({
     producto_id: {
@@ -7,16 +9,16 @@ const detalleComprobanteCompraSchema = new Schema({
     pedido_id: {
         type: Schema.Types.ObjectId,
     },
-    nombre_producto:{
+    nombre_producto: {
         type: String,
     },
-    cantidad:{
+    cantidad: {
         type: String,
     },
-    precio_unitario:{
+    precio_unitario: {
         type: String,
     },
-    subtotal:{
+    subtotal: {
         type: String,
     },
 });

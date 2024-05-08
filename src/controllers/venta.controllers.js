@@ -1,9 +1,10 @@
-import Venta from '../models/venta';
+//import Venta from '../models/venta';
+const Venta = require('../models/venta');
 
 
 const ventaCtrl = {};
 
-ventaCtrl.crearVenta = async (req, res) => {
+ventaCtrl.crearVenta = async(req, res) => {
     try {
         const nuevaVenta = new Venta({
             tipo_comprobante: req.body.tipo_comprobante,
@@ -17,7 +18,7 @@ ventaCtrl.crearVenta = async (req, res) => {
         });
         const ventaGuardada = await nuevaVenta.save();
 
-        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada});
+        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada });
 
     } catch (error) {
         console.log(error);
@@ -25,7 +26,7 @@ ventaCtrl.crearVenta = async (req, res) => {
     }
 }
 
-ventaCtrl.listarVentas = async (req, res) => {
+ventaCtrl.listarVentas = async(req, res) => {
     const { nro_factura_like } = req.query;
     try {
         if (nro_factura_like) {
@@ -45,12 +46,12 @@ ventaCtrl.listarVentas = async (req, res) => {
         res.status(404).json({ mensaje: 'no se pudo enviar la lista de ventas' });
     }
 }
-ventaCtrl.editarVenta = async (req, res) => {
+ventaCtrl.editarVenta = async(req, res) => {
     try {
-    await Venta.findByIdAndUpdate(req.params.id, req.body);
+        await Venta.findByIdAndUpdate(req.params.id, req.body);
 
 
-        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada});
+        res.status(201).json({ mensaje: 'OK', venta: ventaGuardada });
 
         res.status(200).json({ mensaje: 'Se modifica' })
     } catch (error) {
@@ -58,7 +59,7 @@ ventaCtrl.editarVenta = async (req, res) => {
         res.status(404).json({ mensaje: 'error al editar' });
     }
 }
-ventaCtrl.obtenerVentaPorId = async (req, res) => {
+ventaCtrl.obtenerVentaPorId = async(req, res) => {
     try {
         const ventaEncontrada = await Venta.findById(req.params.id);
         res.status(200).json(ventaEncontrada);

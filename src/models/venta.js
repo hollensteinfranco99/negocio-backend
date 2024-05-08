@@ -1,32 +1,34 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const ventaSchema = new Schema({
-    tipo_comprobante:{
+    tipo_comprobante: {
         type: String,
     },
-    fecha_registro:{
+    fecha_registro: {
         type: String,
     },
-    nro_factura:{
+    nro_factura: {
         type: String,
         maxlength: 150
     },
-    subtotal:{
-        type:Number,
+    subtotal: {
+        type: Number,
     },
-    descuento:{
-        type:Number,
+    descuento: {
+        type: Number,
     },
-    total:{
-        type:Number,
+    total: {
+        type: Number,
     },
-    estado:{
+    estado: {
         type: String,
         maxlength: 150,
     },
-    movimiento_id:{
+    movimiento_id: {
         type: Schema.Types.ObjectId,
-        default: null 
+        default: null
     }
 });
 

@@ -1,35 +1,37 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const movimientoSchema = new Schema({
     caja_id: {
         type: Schema.Types.ObjectId,
-        required: true 
+        required: true
     },
-    descripcion:{
+    descripcion: {
         type: String,
         required: true
     },
-    monto:{
+    monto: {
         type: Number,
         required: true,
     },
-    fechaRegistro:{
+    fechaRegistro: {
         type: String,
         maxlength: 150,
     },
-    tipoMovimiento:{
-        type:String,
-    },
-    nro_movimiento:{
+    tipoMovimiento: {
         type: String,
     },
-    estado:{
+    nro_movimiento: {
+        type: String,
+    },
+    estado: {
         type: String,
         maxlength: 150,
     },
     pedido_id: {
         type: Schema.Types.ObjectId,
-        default: null 
+        default: null
     }
 });
 

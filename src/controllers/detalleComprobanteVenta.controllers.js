@@ -1,9 +1,10 @@
-import DetalleVenta from '../models/detalleComprobanteVenta';
+//import DetalleVenta from '../models/detalleComprobanteVenta';
+const DetalleVenta = require('../models/detalleComprobanteVenta');
 
 
 const detalleVentaCtrl = {};
 
-detalleVentaCtrl.crearDetalleVenta = async (req, res) => {
+detalleVentaCtrl.crearDetalleVenta = async(req, res) => {
     try {
         const nuevoDetalleVenta = new DetalleVenta({
             producto_id: req.body.producto_id,
@@ -22,13 +23,13 @@ detalleVentaCtrl.crearDetalleVenta = async (req, res) => {
     }
 }
 
-detalleVentaCtrl.listarDetalleVentas = async (req, res) => {
+detalleVentaCtrl.listarDetalleVentas = async(req, res) => {
     const { venta_id } = req.query;
     try {
         if (venta_id) {
             const detalles = await DetalleVenta.find({ venta_id });
             res.status(200).json(detalles);
-        } else{
+        } else {
             const arregloDetalleVenta = await DetalleVenta.find();
             res.status(200).json(arregloDetalleVenta);
         }
@@ -38,7 +39,7 @@ detalleVentaCtrl.listarDetalleVentas = async (req, res) => {
     }
 }
 
-detalleVentaCtrl.eliminarDetalleVenta = async (req, res) => {
+detalleVentaCtrl.eliminarDetalleVenta = async(req, res) => {
     try {
         await DetalleVenta.findByIdAndDelete(req.params.id);
         res.status(200).json({ mensaje: 'OK' });
@@ -47,7 +48,7 @@ detalleVentaCtrl.eliminarDetalleVenta = async (req, res) => {
         res.status(404).json({ mensaje: 'error al eliminar' });
     }
 }
-detalleVentaCtrl.editarDetalleVenta = async (req, res) => {
+detalleVentaCtrl.editarDetalleVenta = async(req, res) => {
     try {
         await DetalleVenta.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({ mensaje: 'Se modifica' })

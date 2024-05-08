@@ -1,31 +1,33 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const pedidoSchema = new Schema({
-    proveedor:{
+    proveedor: {
         type: String,
         maxlength: 150,
     },
-    fecha_estimada:{
+    fecha_estimada: {
         type: String,
     },
-    nro_factura:{
+    nro_factura: {
         type: String,
         maxlength: 150
     },
-    fecha_registro:{
+    fecha_registro: {
         type: String,
         maxlength: 150,
     },
-    subtotal:{
-        type:Number,
+    subtotal: {
+        type: Number,
     },
-    descuento:{
-        type:Number,
+    descuento: {
+        type: Number,
     },
-    total:{
-        type:Number,
+    total: {
+        type: Number,
     },
-    estado:{
+    estado: {
         type: String,
         maxlength: 150,
     }

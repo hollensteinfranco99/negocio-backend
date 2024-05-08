@@ -1,9 +1,9 @@
-import Movimiento from '../models/movimiento';
-
+//import Movimiento from '../models/movimiento';
+const Movimiento = require('../models/movimiento');
 
 const movimientoCtrl = {};
 
-movimientoCtrl.crearMovimiento = async (req, res) => {
+movimientoCtrl.crearMovimiento = async(req, res) => {
     try {
         const nuevoMovimiento = new Movimiento({
             caja_id: req.body.caja_id,
@@ -17,7 +17,7 @@ movimientoCtrl.crearMovimiento = async (req, res) => {
         });
         const movimientoGuardado = await nuevoMovimiento.save();
 
-        res.status(201).json({ mensaje: 'OK', movimiento: movimientoGuardado});
+        res.status(201).json({ mensaje: 'OK', movimiento: movimientoGuardado });
 
     } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ movimientoCtrl.crearMovimiento = async (req, res) => {
     }
 }
 
-movimientoCtrl.listarMovimientos = async (req, res) => {
+movimientoCtrl.listarMovimientos = async(req, res) => {
     const { caja_id } = req.query;
     try {
         if (caja_id) {
@@ -40,7 +40,7 @@ movimientoCtrl.listarMovimientos = async (req, res) => {
         res.status(404).json({ mensaje: 'no se pudo enviar la lista de movimientos' });
     }
 }
-movimientoCtrl.obtenerMovimientoPorDescripcion = async (req,res) =>{
+movimientoCtrl.obtenerMovimientoPorDescripcion = async(req, res) => {
     const { descripcion_like } = req.query;
     try {
         if (descripcion_like) {
@@ -55,7 +55,7 @@ movimientoCtrl.obtenerMovimientoPorDescripcion = async (req,res) =>{
         res.status(404).json({ mensaje: 'no se pudo enviar la lista de movimientos' });
     }
 }
-movimientoCtrl.obtenerMovimientoPorTipo = async (req,res) =>{
+movimientoCtrl.obtenerMovimientoPorTipo = async(req, res) => {
     const { tipoMovimiento_like } = req.query;
     try {
         if (tipoMovimiento_like) {
@@ -70,7 +70,7 @@ movimientoCtrl.obtenerMovimientoPorTipo = async (req,res) =>{
         res.status(404).json({ mensaje: 'no se pudo enviar la lista de movimientos' });
     }
 }
-movimientoCtrl.eliminarMovimiento = async (req, res) => {
+movimientoCtrl.eliminarMovimiento = async(req, res) => {
     try {
         await Movimiento.findByIdAndDelete(req.params.id);
         res.status(200).json({ mensaje: 'OK' });
@@ -79,7 +79,7 @@ movimientoCtrl.eliminarMovimiento = async (req, res) => {
         res.status(404).json({ mensaje: 'error al eliminar' });
     }
 }
-movimientoCtrl.editarMovimiento = async (req, res) => {
+movimientoCtrl.editarMovimiento = async(req, res) => {
     try {
         await Movimiento.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({ mensaje: 'Se modifica' })
@@ -88,7 +88,7 @@ movimientoCtrl.editarMovimiento = async (req, res) => {
         res.status(404).json({ mensaje: 'error al editar' });
     }
 }
-movimientoCtrl.obtenerMovimiento = async (req, res) => {
+movimientoCtrl.obtenerMovimiento = async(req, res) => {
     try {
         const movimientoEncontrado = await Movimiento.findById(req.params.id);
         res.status(200).json(movimientoEncontrado);

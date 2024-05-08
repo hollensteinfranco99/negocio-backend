@@ -1,30 +1,32 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, {Schema} from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const productoSchema = new Schema({
-    nombre:{
+    nombre: {
         type: String,
         maxlength: 150,
     },
-    precioVenta:{
+    precioVenta: {
         type: Number,
     },
-    marca:{
+    marca: {
         type: String,
         maxlength: 150
     },
-    tipoProducto:{
+    tipoProducto: {
         type: String,
         maxlength: 150,
     },
-    codigo:{
-        type:String,
-        unique:true,
+    codigo: {
+        type: String,
+        unique: true,
     },
-    stock:{
-        type:Number,
+    stock: {
+        type: Number,
     },
-    permitirStockNegativo:{
-        type:Boolean
+    permitirStockNegativo: {
+        type: Boolean
     }
 });
 

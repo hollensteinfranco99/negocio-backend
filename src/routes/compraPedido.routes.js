@@ -1,7 +1,10 @@
-import { Router } from "express";
-import compraPedidoCtrl from "../controllers/compraPedido.controllers";
+//import { Router } from "express";
+//import compraPedidoCtrl from "../controllers/compraPedido.controllers";
+//const router = Router();
 
-const router = Router();
+const express = require('express');
+const compraPedidoCtrl = require("../controllers/compraPedido.controllers");
+const router = express.Router();
 
 router.route('/compraPedido')
     .get(compraPedidoCtrl.listarCompraPedidos)
@@ -16,4 +19,5 @@ router.route('/compraPedidoPorEstado')
     .get(compraPedidoCtrl.listarPedidosPorEstado);
 
 
-export default router;
+//export default router;
+module.exports = router;

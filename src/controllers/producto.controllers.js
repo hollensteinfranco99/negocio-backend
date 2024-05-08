@@ -1,9 +1,9 @@
-import Producto from '../models/producto';
-
+//import Producto from '../models/producto';
+const Producto = require('../models/producto');
 
 const productoCtrl = {};
 
-productoCtrl.crearProducto = async (req, res) => {
+productoCtrl.crearProducto = async(req, res) => {
     try {
         const nuevoProducto = new Producto({
             nombre: req.body.nombre,
@@ -22,11 +22,11 @@ productoCtrl.crearProducto = async (req, res) => {
         res.status(500).json({ mensaje: 'error al agregar producto' });
     }
 }
-productoCtrl.obtenerProductoPorCodigo = async (req, res) => {
+productoCtrl.obtenerProductoPorCodigo = async(req, res) => {
     const { codigo } = req.query;
 
     try {
-        if(codigo){
+        if (codigo) {
             const producto = await Producto.findOne({ codigo: codigo });
             res.status(200).json(producto);
         }
@@ -35,7 +35,7 @@ productoCtrl.obtenerProductoPorCodigo = async (req, res) => {
         res.status(500).json({ mensaje: 'Error en el servidor' });
     }
 };
-productoCtrl.listarProductos = async (req, res) => {
+productoCtrl.listarProductos = async(req, res) => {
     const { codigo_like, nombre_like } = req.query;
 
     try {
@@ -63,7 +63,7 @@ productoCtrl.listarProductos = async (req, res) => {
     }
 };
 
-productoCtrl.eliminarProducto = async (req, res) => {
+productoCtrl.eliminarProducto = async(req, res) => {
     try {
         await Producto.findByIdAndDelete(req.params.id);
         res.status(200).json({ mensaje: 'OK' });
@@ -72,7 +72,7 @@ productoCtrl.eliminarProducto = async (req, res) => {
         res.status(404).json({ mensaje: 'error al eliminar' });
     }
 }
-productoCtrl.editarProducto = async (req, res) => {
+productoCtrl.editarProducto = async(req, res) => {
     try {
         await Producto.findByIdAndUpdate(req.params.id, req.body);
         res.status(200).json({ mensaje: 'Se modifica' })
@@ -81,7 +81,7 @@ productoCtrl.editarProducto = async (req, res) => {
         res.status(404).json({ mensaje: 'error al editar' });
     }
 }
-productoCtrl.obtenerProducto = async (req, res) => {
+productoCtrl.obtenerProducto = async(req, res) => {
     try {
         const productoEncontrado = await Producto.findById(req.params.id);
         res.status(200).json(productoEncontrado);

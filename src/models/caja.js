@@ -1,4 +1,6 @@
-import mongoose, {Schema} from 'mongoose';
+//import mongoose, { Schema } from 'mongoose';
+const mongoose = require('mongoose');
+const { Schema } = mongoose;
 
 const cajaSchema = new Schema({
     fecha_apertura: {
@@ -7,22 +9,22 @@ const cajaSchema = new Schema({
     fecha_cierre: {
         type: String,
     },
-    monto_cierre:{
+    monto_cierre: {
         type: Number,
     },
-    monto_apertura:{
+    monto_apertura: {
         type: Number,
     },
-    monto_total:{
+    monto_total: {
         type: String,
     },
-    diferencia:{
+    diferencia: {
         type: Number,
     },
-    nro_caja:{
+    nro_caja: {
         type: String,
     },
-    estado_caja:{
+    estado_caja: {
         type: String,
     }
 });
