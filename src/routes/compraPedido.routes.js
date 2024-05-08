@@ -19,5 +19,4 @@ router.route('/compraPedidoPorEstado')
     .get(compraPedidoCtrl.listarPedidosPorEstado);
 
 
-//export default router;
 module.exports = router;

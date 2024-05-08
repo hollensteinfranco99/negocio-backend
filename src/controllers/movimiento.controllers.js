@@ -89,13 +89,14 @@ movimientoCtrl.editarMovimiento = async(req, res) => {
     }
 }
 movimientoCtrl.obtenerMovimiento = async(req, res) => {
-    try {
-        const movimientoEncontrado = await Movimiento.findById(req.params.id);
-        res.status(200).json(movimientoEncontrado);
+        try {
+            const movimientoEncontrado = await Movimiento.findById(req.params.id);
+            res.status(200).json(movimientoEncontrado);
 
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener el movimiento' });
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'no se pudo obtener el movimiento' });
+        }
     }
-}
-export default movimientoCtrl;
+    //export default movimientoCtrl;
+module.exports = movimientoCtrl;

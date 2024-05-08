@@ -25,4 +25,5 @@ const detalleComprobanteVentaSchema = new Schema({
 
 const DetalleVenta = mongoose.model('detalleComprobanteVenta', detalleComprobanteVentaSchema);
 
-export default DetalleVenta;
+//export default DetalleVenta;
+module.exports = DetalleVenta;

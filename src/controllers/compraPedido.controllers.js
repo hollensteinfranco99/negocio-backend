@@ -80,13 +80,14 @@ compraPedidoCtrl.editarCompraPedido = async(req, res) => {
     }
 }
 compraPedidoCtrl.obtenerCompraPedido = async(req, res) => {
-    try {
-        const compraPedidoEncontrado = await CompraPedido.findById(req.params.id);
-        res.status(200).json(compraPedidoEncontrado);
+        try {
+            const compraPedidoEncontrado = await CompraPedido.findById(req.params.id);
+            res.status(200).json(compraPedidoEncontrado);
 
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener el pedido' });
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'no se pudo obtener el pedido' });
+        }
     }
-}
-export default compraPedidoCtrl;
+    //export default compraPedidoCtrl;
+module.exports = compraPedidoCtrl;

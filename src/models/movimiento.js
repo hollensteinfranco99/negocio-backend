@@ -37,4 +37,5 @@ const movimientoSchema = new Schema({
 
 const Movimiento = mongoose.model('movimiento', movimientoSchema);
 
-export default Movimiento;
+//export default Movimiento;
+module.exports = Movimiento;

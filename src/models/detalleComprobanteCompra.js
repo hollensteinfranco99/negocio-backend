@@ -25,4 +25,5 @@ const detalleComprobanteCompraSchema = new Schema({
 
 const DetalleCompra = mongoose.model('detalleComprobanteCompra', detalleComprobanteCompraSchema);
 
-export default DetalleCompra;
+//export default DetalleCompra;
+module.exports = DetalleCompra;

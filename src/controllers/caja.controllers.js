@@ -53,13 +53,14 @@ cajaCtrl.editarCaja = async(req, res) => {
     }
 }
 cajaCtrl.obtenerCaja = async(req, res) => {
-    try {
-        const cajaEncontrado = await Caja.findById(req.params.id);
-        res.status(200).json(cajaEncontrado);
+        try {
+            const cajaEncontrado = await Caja.findById(req.params.id);
+            res.status(200).json(cajaEncontrado);
 
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener el caja' });
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'no se pudo obtener el caja' });
+        }
     }
-}
-export default cajaCtrl;
+    //export default cajaCtrl;
+module.exports = cajaCtrl;

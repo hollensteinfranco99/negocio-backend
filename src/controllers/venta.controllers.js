@@ -60,13 +60,14 @@ ventaCtrl.editarVenta = async(req, res) => {
     }
 }
 ventaCtrl.obtenerVentaPorId = async(req, res) => {
-    try {
-        const ventaEncontrada = await Venta.findById(req.params.id);
-        res.status(200).json(ventaEncontrada);
+        try {
+            const ventaEncontrada = await Venta.findById(req.params.id);
+            res.status(200).json(ventaEncontrada);
 
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener la venta' });
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'no se pudo obtener la venta' });
+        }
     }
-}
-export default ventaCtrl;
+    //export default ventaCtrl;
+module.exports = ventaCtrl;

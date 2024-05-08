@@ -35,4 +35,5 @@ const pedidoSchema = new Schema({
 
 const CompraPedido = mongoose.model('compraPedido', pedidoSchema);
 
-export default CompraPedido;
+//export default CompraPedido;
+module.exports = CompraPedido;

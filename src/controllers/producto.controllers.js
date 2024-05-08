@@ -82,13 +82,14 @@ productoCtrl.editarProducto = async(req, res) => {
     }
 }
 productoCtrl.obtenerProducto = async(req, res) => {
-    try {
-        const productoEncontrado = await Producto.findById(req.params.id);
-        res.status(200).json(productoEncontrado);
+        try {
+            const productoEncontrado = await Producto.findById(req.params.id);
+            res.status(200).json(productoEncontrado);
 
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'no se pudo obtener el producto' });
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'no se pudo obtener el producto' });
+        }
     }
-}
-export default productoCtrl;
+    //export default productoCtrl;
+module.exports = productoCtrl;

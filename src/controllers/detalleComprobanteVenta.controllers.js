@@ -49,12 +49,13 @@ detalleVentaCtrl.eliminarDetalleVenta = async(req, res) => {
     }
 }
 detalleVentaCtrl.editarDetalleVenta = async(req, res) => {
-    try {
-        await DetalleVenta.findByIdAndUpdate(req.params.id, req.body);
-        res.status(200).json({ mensaje: 'Se modifica' })
-    } catch (error) {
-        console.log(error);
-        res.status(404).json({ mensaje: 'error al editar' });
+        try {
+            await DetalleVenta.findByIdAndUpdate(req.params.id, req.body);
+            res.status(200).json({ mensaje: 'Se modifica' })
+        } catch (error) {
+            console.log(error);
+            res.status(404).json({ mensaje: 'error al editar' });
+        }
     }
-}
-export default detalleVentaCtrl;
+    //export default detalleVentaCtrl;
+module.exports = detalleVentaCtrl;
